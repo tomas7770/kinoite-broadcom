@@ -9,12 +9,10 @@ RELEASE="$(rpm -E %fedora)"
 
 # Packages can be installed from any enabled yum repo on the image.
 # Install RPMFusion
-rpm-ostree install \
-    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-40.noarch.rpm \
-    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-40.noarch.rpm
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+dnf install -y \
+    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-41.noarch.rpm \
+    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-41.noarch.rpm
 
 find /tmp/rpms
-rpm-ostree install /tmp/rpms/kmods/kmod-wl*.rpm
-rpm-ostree install broadcom-wl
+dnf install -y /tmp/rpms/kmods/kmod-wl*.rpm
+dnf install -y broadcom-wl
